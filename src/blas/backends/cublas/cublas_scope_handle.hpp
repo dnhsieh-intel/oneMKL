@@ -66,7 +66,7 @@ class CublasScopedContextHandler {
     bool needToRecover_;
     sycl::interop_handle &ih;
     static thread_local cublas_handle<pi_context> handle_helper;
-    CUstream get_stream(const sycl::queue &queue);
+
     sycl::context get_context(const sycl::queue &queue);
 
 public:
@@ -88,6 +88,8 @@ public:
         CUdeviceptr cudaPtr = ih.get_native_mem<sycl::backend::ext_oneapi_cuda>(acc);
         return reinterpret_cast<T>(cudaPtr);
     }
+
+    CUstream get_stream(const sycl::queue &queue);
 };
 
 } // namespace cublas
