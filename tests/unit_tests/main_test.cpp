@@ -131,7 +131,7 @@ int main(int argc, char** argv) {
 #ifdef __HIPSYCL__
                         if (dev.is_accelerator())
 #else
-                        if (!dev.is_accelerator())
+                    if (!dev.is_accelerator())
 #endif
                             local_devices.push_back(dev);
                     }
